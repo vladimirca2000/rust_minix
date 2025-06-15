@@ -29,6 +29,13 @@ fn alloc_error(_layout: Layout) -> ! {
     panic!("Allocation error")
 }
 
+// Função de atraso para garantir estabilidade do console
+unsafe fn delay(cycles: usize) {
+    for _ in 0..cycles {
+        core::arch::asm!("nop", options(nomem, nostack));
+    }
+}
+
 // Ponto de entrada principal em Rust
 #[no_mangle]
 pub extern "C" fn rust_main() -> ! {
@@ -42,6 +49,12 @@ pub extern "C" fn rust_main() -> ! {
 
     // Inicializa drivers (UART primeiro para habilitar prints)
     drivers::init();
+    
+    // Aguarda estabilização do console
+    unsafe {
+        println!("Waiting for console to stabilize...");
+        delay(50_000_000); // Ajuste conforme a velocidade do seu CPU
+    }
     
     println!("=== Rust MINIX (ARM64) ===");
     println!("BSS cleared: {} bytes", bss_size);
@@ -71,7 +84,15 @@ pub extern "C" fn rust_main() -> ! {
     }
     
     println!("System ready for Phase 2");
+
+
     
     // Loop principal do kernel
-    loop {}
+    loop {
+        //mostre a hora atual
+        let time = arch::aarch64::get_time();
+        // mostra hora no centro da tela
+
+        println!("Current time: {} ms", time);
+    }
 }

@@ -29,3 +29,16 @@ fn get_core_id() -> u8 {
     unsafe { asm!("mrs {}, mpidr_el1", out(reg) id) };
     (id & 0xFF) as u8
 }
+
+pub fn get_time() -> u64 {
+        // On AArch64, you can use the system counter
+        let counter: u64;
+        unsafe {
+            core::arch::asm!("mrs {}, cntpct_el0", out(reg) counter);
+        }
+        
+        // Convert counter ticks to milliseconds
+        // You need to know your counter frequency to do this correctly
+        // This example assumes a 1MHz counter
+        counter / 1000
+    }

@@ -14,9 +14,11 @@ pub extern "C" fn memzero(dest: *mut u8, size: usize) {
     }
 }
 
+
+
 pub fn init() {
     println!("Initializing memory subsystems...");
-    
+
     // Inicializar alocador
     unsafe {
         allocator::ALLOCATOR.init(HEAP_START, HEAP_SIZE);
