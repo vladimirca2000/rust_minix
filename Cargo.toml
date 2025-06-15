@@ -1,6 +1,21 @@
 [package]
 name = "rust_minix"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+build = "build.rs"
 
 [dependencies]
+spin = "0.9.8"
+
+[features]
+default = []
+alloc = []  # Habilita suporte a alocação dinâmica
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+lto = true
+codegen-units = 1
+opt-level = "s"
