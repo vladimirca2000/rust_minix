@@ -3,6 +3,13 @@ name = "rust_minix"
 version = "0.1.0"
 edition = "2021"
 build = "build.rs"
+authors = ["Rust MINIX Team"]
+description = "A MINIX-like operating system kernel written in Rust for ARM64/Raspberry Pi 3B+"
+
+[[bin]]
+name = "rust_minix"
+path = "src/main.rs"
+test = false  # Disable tests for the kernel binary
 
 [dependencies]
 spin = "0.9.8"
@@ -13,9 +20,15 @@ alloc = []  # Habilita suporte a alocação dinâmica
 
 [profile.dev]
 panic = "abort"
+overflow-checks = true
+lto = false
+opt-level = 1
 
 [profile.release]
 panic = "abort"
 lto = true
 codegen-units = 1
-opt-level = "s"
+opt-level = "s"  # Optimize for size
+overflow-checks = false
+debug = false
+strip = true

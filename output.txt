@@ -1,0 +1,85 @@
+Initializing BCM2837 interrupt controller...
+Interrupt controller initialized
+Initializing timer system...
+Timer interrupt handler registered
+Setting up local timer with interval 10000 us
+Enabled local IRQ 64
+Local timer configured and enabled
+Timer system initialized
+Display driver initialized (simulated mode)
+[DISPLAY] Screen cleared
+[DISPLAY LINE 1] === Rust MINIX Display ===
+[DISPLAY LINE 2] ARM64 Kernel for Raspberry Pi 3B+
+Drivers initialized
+Waiting for console to stabilize...
+=== Rust MINIX (ARM64) ===
+Version: 0.1.0
+Target: aarch64 (cortex-a53)
+Build: Compiled with Rust
+BSS cleared: 72 bytes
+Stack start: 0x89000
+Initializing memory subsystems...
+Heap initialized at 0x40000000 (size: 65536 bytes)
+MMU initialized (stub)
+Interrupts disabled
+Running at EL3
+Running on core 0
+Setting up exception handling...
+Setting up exception vector table...
+Exception vector table installed
+Enabling interrupts...
+IRQ interrupts enabled
+System ready for Phase 2
+Testing interrupt system...
+Interrupt status: true
+Timer tick count before: 0
+System is ready and running!
+Counter: 0, System time: 7014 ms, Timer ticks: 0
+[DISPLAY LINE 3] System Status Update:
+[DISPLAY LINE 4]   System running normally
+[DISPLAY LINE 5] ÔÅ│ Waiting for interrupts...
+  System Time: 7014 ms
+  Timer Ticks: 0
+  Loop Counter: 0
+[DISPLAY LINE 6] ---
+Counter: 1, System time: 8690 ms, Timer ticks: 0
+[DISPLAY LINE 7] System Status Update:
+[DISPLAY LINE 8]   System running normally
+[DISPLAY LINE 9] ÔÅ│ Waiting for interrupts...
+  System Time: 8690 ms
+  Timer Ticks: 0
+  Loop Counter: 1
+[DISPLAY LINE 10] ---
+Counter: 2, System time: 10331 ms, Timer ticks: 0
+[DISPLAY LINE 11] System Status Update:
+[DISPLAY LINE 12]   System running normally
+[DISPLAY LINE 13] ÔÅ│ Waiting for interrupts...
+  System Time: 10331 ms
+  Timer Ticks: 0
+  Loop Counter: 2
+[DISPLAY LINE 14] ---
+Counter: 3, System time: 12005 ms, Timer ticks: 0
+[DISPLAY LINE 15] System Status Update:
+[DISPLAY LINE 16]   System running normally
+[DISPLAY LINE 17] ÔÅ│ Waiting for interrupts...
+  System Time: 12005 ms
+  Timer Ticks: 0
+  Loop Counter: 3
+[DISPLAY LINE 18] ---
+Counter: 4, System time: 13450 ms, Timer ticks: 0
+[DISPLAY LINE 19] System Status Update:
+[DISPLAY LINE 20]   System running normally
+[DISPLAY LINE 21] ÔÅ│ Waiting for interrupts...
+  System Time: 13450 ms
+  Timer Ticks: 0
+  Loop Counter: 4
+[DISPLAY LINE 22] ---
+Test completed after 5000000 iterations
+[DISPLAY LINE 23] System Status Update:
+[DISPLAY LINE 24]   System running normally
+[DISPLAY LINE 25] ÔÅ│ Waiting for interrupts...
+  System Time: 14893 ms
+  Timer Ticks: 0
+  Loop Counter: 5
+[DISPLAY LINE 26] ---
+Entering infinite loop...

@@ -1,11 +1,39 @@
+# Configuração do Cargo para Rust MINIX ARM64
+# Target: Raspberry Pi 3B+ (Cortex-A53)
+
 [build]
 target = "aarch64-unknown-none"
 
 [target.aarch64-unknown-none]
+# Flags específicas para Cortex-A53 e kernel bare-metal
 rustflags = [
+    # Linker script customizado
     "-C", "link-arg=-Tlinker.ld",
-    "-C", "link-arg=--build-id=none",
+    
+    # CPU específico: Cortex-A53 (Raspberry Pi 3B+)
     "-C", "target-cpu=cortex-a53",
+    
+    # Features ARM64 específicas
+    "-C", "target-feature=+neon",
+    
+    # Otimizações de linking
+    "-C", "link-arg=--build-id=none",
     "-C", "link-arg=--no-undefined-version",
-    "-C", "link-arg=--no-rosegment"
+    "-C", "link-arg=--no-rosegment",
+    "-C", "link-arg=--gc-sections",  # Remove seções não utilizadas
+    
+    # Configurações de memória
+    "-C", "link-arg=-z",
+    "-C", "link-arg=max-page-size=4096",
+    "-C", "link-arg=--no-dynamic-linker",    # Kernel estático
+    
+    # Flags de debugging e informação
+    "-C", "symbol-mangling-version=v0",  # Símbolos mais limpos
+    
+    # Otimizações específicas para bare-metal
+    "-C", "no-redzone",                  # Importante para kernels
 ]
+
+[env]
+# Variáveis de ambiente para build
+RUST_TARGET_PATH = "."

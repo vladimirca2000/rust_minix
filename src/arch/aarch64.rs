@@ -1,5 +1,4 @@
-use crate::println;  // Importação correta
-
+use crate::println;
 use core::arch::asm;
 
 pub fn init() {
@@ -16,6 +15,7 @@ pub fn init() {
     // Obtém ID do core
     let core_id = get_core_id();
     println!("Running on core {}", core_id);
+    println!("DEBUG: Core ID = {}, comparing with 0", core_id);
 }
 
 fn current_el() -> u32 {
